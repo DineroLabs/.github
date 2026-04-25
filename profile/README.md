@@ -1,0 +1,94 @@
+<div align="center">
+
+<img src="https://github.com/DineroLabs.png?size=180" width="120" alt="Dinero" />
+
+# Dinero — Real Money For Free People
+
+**A post-quantum, utreexo-native, fair-launched cryptocurrency.**
+Mobile-mineable. Self-custody by default. No premine.
+
+[![Latest release](https://img.shields.io/github/v/release/DineroLabs/dinero-releases?label=release)](https://github.com/DineroLabs/dinero-releases/releases/latest)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/DineroLabs/dinero-releases/blob/main/LICENSE)
+[![Website](https://img.shields.io/badge/website-dinero--coin.com-0066CC)](https://dinero-coin.com)
+
+</div>
+
+---
+
+## What makes Dinero different
+
+| | |
+|---|---|
+| **Post-quantum native** | Coinbase outputs accept both Taproot (`din1p…`) and **P2MR** (`din1r…`), a hash-based signature scheme that survives Shor's algorithm. Every block can be spent today and decades from now. |
+| **Utreexo from genesis** | The full UTXO set lives in a 1-KB accumulator commitment, not a 100-GB database. Light nodes verify the chain end-to-end without trusting anyone. |
+| **128-byte block header** | Native `utreexo_root` field at offset `0x44`. No bolt-ons, no legacy compatibility cruft. |
+| **Mobile-first mining** | Stratum V2 + Job Declaration over Noise NX. Phones can mine and own their own coinbase outputs — no pool can redirect rewards. |
+| **Fair launch** | No premine, no ICO, no insider allocation. Every coin in circulation was mined under the same rules every miner faces today. |
+
+## Get started
+
+### Run the wallet (macOS, signed + notarized)
+👉 **[Download the latest release](https://github.com/DineroLabs/dinero-releases/releases/latest)**
+
+Pick `Dinero-vX.Y.Z-macOS-arm64-qt.zip`, double-click after extracting. Apple Silicon only for now.
+
+### Run a node from source
+```bash
+git clone https://github.com/DineroLabs/Dinero-Coin
+cd Dinero-Coin
+cmake --build build --target dinerod -j$(sysctl -n hw.logicalcpu)  # macOS
+./build/dinerod --datadir ~/.dinero
+```
+
+### Mine
+- **CPU pool** (any platform): `dinero-sv2-miner --pool 172.93.160.131:4444 --payout-script-hex 5120…`
+- **GPU pool** (Apple Silicon, ~500 MH/s on M4 Max): `dinero-sv2-gpu-miner --pool 172.93.160.131:4444 …`
+- **From the wallet**: open Dinero-Qt → Mining tab → "Pool Mining (SV2 / Job Declaration)" → Start.
+
+### Get an address
+Open the wallet, go to **Receive**, pick **Taproot** (`din1p…`) or **Quantum-Safe P2MR** (`din1r…`), click **New Address**.
+
+## Repositories
+
+| Repo | What it is |
+|---|---|
+| 🚀 **[dinero-releases](https://github.com/DineroLabs/dinero-releases)** | Signed binary releases (start here) |
+| 🪙 [Dinero-Coin](https://github.com/DineroLabs/Dinero-Coin) | The full-node daemon (`dinerod`) |
+| 🖥️ [dinero-qt](https://github.com/DineroLabs/dinero-qt) | Cross-platform desktop wallet |
+| 📱 [DineroDPI](https://github.com/DineroLabs/DineroDPI) | iOS wallet + phone-resident miner |
+| 🌐 [dinero-explorer](https://github.com/DineroLabs/dinero-explorer) | Web block explorer |
+| ⛏️ [dinero-sv2](https://github.com/DineroLabs/dinero-sv2) | Stratum V2 + Job Declaration (CPU + GPU miners) |
+| 🔌 [dinero-stratum](https://github.com/DineroLabs/dinero-stratum) | Legacy Stratum V1 server (ASIC compatibility) |
+| 🌉 [wdin-bridge](https://github.com/DineroLabs/wdin-bridge) | wDIN ↔ Base wrapped-token bridge |
+
+## Network
+
+- **Mainnet RPC**: `20998` · **P2P**: `20999`
+- **Reference SV2 pool**: `172.93.160.131:4444` (Noise pubkey: `17fc0efc6f937f3dd070b9d79da8b387f05a68598ecfd646db65735be5477f5f`)
+- **Reference V1 stratum**: `127.0.0.1:3333` (run your own; user-launchable from the GUI)
+- **Genesis**: `0000001c36abf27e2c233ff40ed0c08888926c24450f3bff82a047ae1528b76f` · 2026-04-17 00:00:00 UTC · nBits `0x1d31ffce` · 50× easier than Bitcoin floor
+
+## Contribute
+
+Pull requests welcome on any public repo. For coordination, security disclosures, or partnership inquiries see the individual repo `SECURITY.md` / `CONTRIBUTING.md`.
+
+## Verifying releases
+
+All `Dinero-Qt.app` bundles are signed with **Developer ID Application: Mirsad Hajdarevic (JXJS6ZA5FJ)** and notarized by Apple. Verify locally:
+
+```bash
+spctl -a -t exec -vv Dinero-Qt.app
+# Expected: accepted, source=Notarized Developer ID
+```
+
+CLI binaries ship with `SHA256SUMS.txt` next to each archive.
+
+## License
+
+MIT. See [LICENSE](https://github.com/DineroLabs/dinero-releases/blob/main/LICENSE).
+
+---
+
+<div align="center">
+<sub>Dinero · Real Money For Free People · <a href="https://dinero-coin.com">dinero-coin.com</a></sub>
+</div>
