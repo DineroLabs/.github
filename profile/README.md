@@ -32,13 +32,12 @@ Mobile-mineable. Self-custody by default. No premine.
 
 Pick `Dinero-vX.Y.Z-macOS-arm64-qt.zip`, double-click after extracting. Apple Silicon only for now.
 
-### Run a node from source
+### Run a node
+The signed `dinerod` daemon ships in every release bundle — extract `Dinero-vX.Y.Z-macOS-arm64.tar.gz` and launch:
 ```bash
-git clone https://github.com/DineroLabs/Dinero-Coin
-cd Dinero-Coin
-cmake --build build --target dinerod -j$(sysctl -n hw.logicalcpu)  # macOS
-./build/dinerod --datadir ~/.dinero
+./Dinero-vX.Y.Z-macOS-arm64/dinerod --datadir ~/.dinero
 ```
+Daemon source access is currently limited to verified contributors — email `team@dinero-coin.com` if you need it.
 
 ### Mine
 - **CPU pool** (any platform): `dinero-sv2-miner --pool 172.93.160.131:4444 --payout-script-hex 5120…`
@@ -53,13 +52,13 @@ Open the wallet, go to **Receive**, pick **Taproot** (`din1p…`) or **Quantum-S
 | Repo | What it is |
 |---|---|
 | 🚀 **[dinero-releases](https://github.com/DineroLabs/dinero-releases)** | Signed binary releases (start here) |
-| 🪙 [Dinero-Coin](https://github.com/DineroLabs/Dinero-Coin) | The full-node daemon (`dinerod`) |
 | 🖥️ [dinero-qt](https://github.com/DineroLabs/dinero-qt) | Cross-platform desktop wallet |
 | 📱 [DineroDPI](https://github.com/DineroLabs/DineroDPI) | iOS wallet + phone-resident miner |
 | 🌐 [dinero-explorer](https://github.com/DineroLabs/dinero-explorer) | Web block explorer |
 | ⛏️ [dinero-sv2](https://github.com/DineroLabs/dinero-sv2) | Stratum V2 + Job Declaration (CPU + GPU miners) |
 | 🔌 [dinero-stratum](https://github.com/DineroLabs/dinero-stratum) | Legacy Stratum V1 server (ASIC compatibility) |
-| 🌉 [wdin-bridge](https://github.com/DineroLabs/wdin-bridge) | wDIN ↔ Base wrapped-token bridge |
+
+> **Daemon source (`dinerod`) and the wDIN ↔ Base bridge server are kept private** while the chain stabilises. The signed binaries in [dinero-releases](https://github.com/DineroLabs/dinero-releases) are the trust anchor.
 
 ## Network
 
