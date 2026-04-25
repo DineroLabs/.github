@@ -5,7 +5,7 @@
 # Dinero — Real Money For Free People
 
 **A post-quantum, utreexo-native, fair-launched cryptocurrency.**
-Mobile-mineable. Self-custody by default. No premine.
+Self-custody by default. No premine.
 
 [![Latest release](https://img.shields.io/github/v/release/DineroLabs/dinero-releases?label=release)](https://github.com/DineroLabs/dinero-releases/releases/latest)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/DineroLabs/dinero-releases/blob/main/LICENSE)
@@ -22,7 +22,7 @@ Mobile-mineable. Self-custody by default. No premine.
 | **Post-quantum native** | Coinbase outputs accept both Taproot (`din1p…`) and **P2MR** (`din1r…`), a hash-based signature scheme that survives Shor's algorithm. Every block can be spent today and decades from now. |
 | **Utreexo from genesis** | The full UTXO set lives in a 1-KB accumulator commitment, not a 100-GB database. Light nodes verify the chain end-to-end without trusting anyone. |
 | **128-byte block header** | Native `utreexo_root` field at offset `0x44`. No bolt-ons, no legacy compatibility cruft. |
-| **Mobile-first mining** | Stratum V2 + Job Declaration over Noise NX. Phones can mine and own their own coinbase outputs — no pool can redirect rewards. |
+| **Open mining stack** | Stratum V2 + Job Declaration over Noise NX lets miners own their coinbase outputs — no pool can redirect rewards. |
 | **Fair launch** | No premine, no ICO, no insider allocation. Every coin in circulation was mined under the same rules every miner faces today. |
 
 ## Get started
@@ -39,11 +39,6 @@ The signed `dinerod` daemon ships in every release bundle — extract `Dinero-vX
 ```
 Daemon source access is currently limited to verified contributors — email `team@dinero-coin.com` if you need it.
 
-### Mine
-- **CPU pool** (any platform): `dinero-sv2-miner --pool 172.93.160.131:4444 --payout-script-hex 5120…`
-- **GPU pool** (Apple Silicon, ~500 MH/s on M4 Max): `dinero-sv2-gpu-miner --pool 172.93.160.131:4444 …`
-- **From the wallet**: open Dinero-Qt → Mining tab → "Pool Mining (SV2 / Job Declaration)" → Start.
-
 ### Get an address
 Open the wallet, go to **Receive**, pick **Taproot** (`din1p…`) or **Quantum-Safe P2MR** (`din1r…`), click **New Address**.
 
@@ -53,7 +48,7 @@ Open the wallet, go to **Receive**, pick **Taproot** (`din1p…`) or **Quantum-S
 |---|---|
 | 🚀 **[dinero-releases](https://github.com/DineroLabs/dinero-releases)** | Signed binary releases (start here) |
 | 🖥️ [dinero-qt](https://github.com/DineroLabs/dinero-qt) | Cross-platform desktop wallet |
-| 📱 [DineroDPI](https://github.com/DineroLabs/DineroDPI) | iOS wallet + phone-resident miner |
+| 📱 [DineroDPI](https://github.com/DineroLabs/DineroDPI) | iOS self-custody wallet. App Store builds exclude mining; developer builds may expose advanced tools. |
 | 🌐 [dinero-explorer](https://github.com/DineroLabs/dinero-explorer) | Web block explorer |
 | ⛏️ [dinero-sv2](https://github.com/DineroLabs/dinero-sv2) | Stratum V2 + Job Declaration (CPU + GPU miners) |
 | 🔌 [dinero-stratum](https://github.com/DineroLabs/dinero-stratum) | Legacy Stratum V1 server (ASIC compatibility) |
